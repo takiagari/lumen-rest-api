@@ -24,3 +24,63 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 使い方と設計
+
+### GET /api/posts/
+すべての投稿を取得  
+URL: `http://localhost:8000/api/posts`
+
+### POST /api/posts
+新しい投稿を作成  
+URL: `http://localhost:8000/api/posts`
+
+**Body (JSON)**
+```json
+{
+  "title": "新しい投稿",
+  "content": "これは新しい投稿の内容です。"
+}
+```
+### GET /api/posts/{id}
+指定したIDの投稿を取得  
+URL: `http://localhost:8000/api/posts/1`
+
+### PUT /api/posts/{id}
+指定したIDの投稿を更新  
+URL: `http://localhost:8000/api/posts/1`
+
+**Body (JSON)**
+```json
+{
+  "title": "更新された投稿",
+  "content": "これは更新された投稿の内容です。"
+}
+```
+
+### DELETE /api/posts/{id}
+指定したIDの投稿を削除する  
+URL: `http://localhost:8000/api/posts/1`
+
+## 投稿データのテーブル設計
+
+投稿データを管理するためのテーブル設計です。シンプルな投稿テーブルを設計しました。
+
+### テーブル名
+`posts`
+
+### カラム
+- `id`: 自動インクリメントID（主キー）
+- `title`: 投稿のタイトル
+- `content`: 投稿の内容
+- `created_at`: 投稿の作成日時（タイムスタンプ）
+- `updated_at`: 投稿の更新日時（タイムスタンプ）
+
+投稿の基本的な情報を保存し、管理するための最小構成のテーブルです。
+
+## API エンドポイント
+- **GET /api/posts**: すべての投稿を取得する
+- **GET /api/posts/{id}**: 指定したIDの投稿を取得する
+- **POST /api/posts**: 新しい投稿を作成する
+- **PUT /api/posts/{id}**: 指定したIDの投稿を更新する
+- **DELETE /api/posts/{id}**: 指定したIDの投稿を削除する
